@@ -26,7 +26,14 @@ void DFA::SetFinal(int index) {
 // feed a character and return true if the DFA reaches its final state.
 bool DFA::TestChar(char input) {
 	int dest;
-	dest = DfaNodes[current].transition[input];
+	if(DfaNodes[current].transition[input]) {
+		dest = DfaNodes[current].transition[input];
+	}
+	else if(DfaNodes[current].transition['.']) {
+		dest = DfaNodes[current].transition['.'];
+	} else {
+		dest = current;
+	}
 	current = dest;
 	if(DfaNodes[current].isFinal == true) {
 		return true;

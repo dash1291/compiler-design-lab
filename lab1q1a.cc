@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char *argv[]) {
 	DFA *dfa;
 	dfa = new DFA();
 	dfa->NewState();
@@ -17,14 +17,14 @@ int main() {
 	dfa->AddTransition(2, '0', 3);
 	dfa->AddTransition(2, '1', 3);
 	dfa->NewState();
-	dfa->AddTransition(3, '0', 2);
-	dfa->AddTransition(3, '1', 2);
+	dfa->AddTransition(3, '0', 1);
+	dfa->AddTransition(3, '1', 1);
 	dfa->SetFinal(3);
 
-	if(dfa->TestString("001") == true) {
-		cout << "accepted";
+	if(dfa->TestString(argv[1]) == true) {
+		cout << "accepted" << endl;
 	} else {
-		cout << "rejected";
+		cout << "rejected" << endl;
 	}
 
 	return 0;
